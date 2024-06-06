@@ -1,4 +1,4 @@
-// app.js
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -16,6 +16,7 @@ const TaskSchema = new mongoose.Schema({
 
 const Task = mongoose.model('Task', TaskSchema);
 
+app.use(express.static('public'));
 app.get('/tasks', async (req, res) => {
     const tasks = await Task.find();
     res.json(tasks);
